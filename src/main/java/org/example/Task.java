@@ -148,17 +148,16 @@ public class Task {
 
     public int binSearch(Integer num, List<Integer> coordinates, Map<Integer, Integer> coords){
 
-        //todo вернуть -1
         int left = 0;
         int right = coordinates.size() ;
         int middle;
-        if (coordinates.get(0) > num || coordinates.get(coordinates.size() - 1) < num) return -1;
+//        if (coordinates.get(0) > num || coordinates.get(coordinates.size() - 1) < num) return -1;
         while (left < right) {
             middle = left + (right - left) / 2;
             if (coordinates.get(middle) <= num) {
                 left = middle + 1;
             }
-            else if (coordinates.get(middle) > num) {
+            else{
                 right = middle;
             }
         }
@@ -185,8 +184,8 @@ public class Task {
             }
             int x = task.binSearch(scanner.nextInt(), task.coordinatesX,  task.coordsX);
             int y = task.binSearch(scanner.nextInt(), task.coordinatesY,  task.coordsY);
-//            System.out.println(x + " " + y);
-            if (x == -1 || y == -1 || task.persistentNode.size() <= x ||  task.persistentNode.size() <= y) {
+            System.out.println(x + " " + y);
+            if (x == -1 || y == -1 || task.persistentNode.size() <= x) {
                 System.out.println(0);
                 continue;
             }
