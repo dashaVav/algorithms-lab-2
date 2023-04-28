@@ -1,6 +1,8 @@
 package solution;
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 public class Task3 {
     public static class EventComparator implements Comparator<Event> {
@@ -14,8 +16,7 @@ public class Task3 {
     List<Integer> coordinatesY;
 
     public Task3 (List<Rectangle> rectangles) {
-
-//        if (rectangles.size() == 0) return;
+        if (rectangles.size() == 0) return;
         Set<Integer> coordsX = new HashSet<>();
         Set<Integer> coordsY = new HashSet<>();
 
@@ -68,13 +69,13 @@ public class Task3 {
         return left - 1;
     }
 
-    public int find(int x, int y){
+    public int find(Point point){
         if (coordinatesX.size() == 0) {
             return 0;
         }
 
-        int xZip = binSearch(x, coordinatesX);
-        int yZip = binSearch(y, coordinatesY);
+        int xZip = binSearch(point.x, coordinatesX);
+        int yZip = binSearch(point.y, coordinatesY);
 
 
         if (xZip == -1 || yZip == -1 || persistentSegmentTree.PersistentSegmentTreeNodes.size() <= xZip) {
@@ -98,7 +99,7 @@ public class Task3 {
 
         int m = scanner.nextInt();
         for (int i = 0; i < m; i++) {
-            System.out.println(task.find(scanner.nextInt(), scanner.nextInt()));
+            System.out.print(task.find(new Point(scanner.nextInt(), scanner.nextInt())) + " ");
         }
     }
 
