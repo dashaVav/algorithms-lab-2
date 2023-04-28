@@ -7,9 +7,10 @@ import java.util.Scanner;
 
 public class Task1 {
     List<Rectangle> rectangles;
-    Task1(List<Rectangle> rectangles) {
+    public Task1(List<Rectangle> rectangles) {
         this.rectangles = rectangles;
     }
+
     public int find(Point point) {
         int count = 0;
 

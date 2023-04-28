@@ -9,7 +9,7 @@ public class Task2 {
     List<Integer> coordinatesX;
     List<Integer> coordinatesY;
 
-    Task2(List<Rectangle> rectangles) {
+    public Task2(List<Rectangle> rectangles) {
         Set<Integer> setX = new HashSet<>();
         Set<Integer> setY = new HashSet<>();
 
