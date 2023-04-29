@@ -40,7 +40,6 @@ public class Autotest {
         PrintWriter writerThirdAlgorithm = new PrintWriter("artefacts/TreeAlgorithmResults.csv");
         writerThirdAlgorithm.write("Rectangles count; Build time; Request time; Total time\n");
 
-        writerFirstAlgorithm.write("");
         for (int i = 0; i < 15; i++){
             List<Rectangle> rectangles = generateTestRectangles((int) Math.pow(2, i));
             int I = (int) Math.pow(2, i);
