@@ -4,12 +4,12 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-public class Task2 {
+public class SecondAlgorithm {
     private final int[][] map;
     List<Integer> coordinatesX;
     List<Integer> coordinatesY;
 
-    public Task2(List<Rectangle> rectangles) {
+    public SecondAlgorithm(List<Rectangle> rectangles) {
         Set<Integer> setX = new HashSet<>();
         Set<Integer> setY = new HashSet<>();
 
@@ -73,21 +73,4 @@ public class Task2 {
         return map[i][j];
     }
 
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-
-        List<Rectangle> rectangles= new ArrayList<>();
-        for (int i = 0; i < n; i++){
-            rectangles.add(new Rectangle(scanner.nextInt(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt()));
-        }
-
-        Task2 task = new Task2(rectangles);
-
-        int m = scanner.nextInt();
-        for (int i = 0; i < m; i++) {
-            System.out.println(task.find(new Point(scanner.nextInt(), scanner.nextInt())));
-        }
-    }
 }

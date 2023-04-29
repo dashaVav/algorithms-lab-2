@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-public class Task3 {
+public class ThirdAlgorithm {
     public static class EventComparator implements Comparator<Event> {
         public int compare(Event e1, Event e2) {
             return e1.n - e2.n;
@@ -15,7 +15,7 @@ public class Task3 {
     List<Integer> coordinatesX;
     List<Integer> coordinatesY;
 
-    public Task3 (List<Rectangle> rectangles) {
+    public ThirdAlgorithm(List<Rectangle> rectangles) {
         if (rectangles.size() == 0) return;
         Set<Integer> coordsX = new HashSet<>();
         Set<Integer> coordsY = new HashSet<>();
@@ -84,23 +84,4 @@ public class Task3 {
 
         return persistentSegmentTree.find(xZip, yZip);
     }
-
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        int n = scanner.nextInt();
-        List<Rectangle> rectangles= new ArrayList<>();
-        for (int i = 0; i < n; i++){
-            rectangles.add(new Rectangle(scanner.nextInt(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt()));
-        }
-
-        Task3 task = new Task3(rectangles);
-
-        int m = scanner.nextInt();
-        for (int i = 0; i < m; i++) {
-            System.out.print(task.find(new Point(scanner.nextInt(), scanner.nextInt())) + " ");
-        }
-    }
-
 }

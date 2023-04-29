@@ -1,9 +1,9 @@
 package tests;
 
 import solution.Rectangle;
-import solution.Task1;
-import solution.Task2;
-import solution.Task3;
+import solution.FirstAlgorithm;
+import solution.SecondAlgorithm;
+import solution.ThirdAlgorithm;
 
 import java.awt.*;
 import java.io.*;
@@ -47,7 +47,7 @@ public class TestGenerator {
             int I = (int) Math.pow(2, i);
             System.out.println(I);
             start = System.nanoTime();
-            Task1 firstAlgorithm = new Task1(rectangles);
+            FirstAlgorithm firstAlgorithm = new FirstAlgorithm(rectangles);
             built = System.nanoTime() - start;
             start = System.nanoTime();
             points.forEach(firstAlgorithm::find);
@@ -56,7 +56,7 @@ public class TestGenerator {
 
             if (i < 13) {
                 start = System.nanoTime();
-                Task2 secondAlgorithm = new Task2(rectangles);
+                SecondAlgorithm secondAlgorithm = new SecondAlgorithm(rectangles);
                 built = System.nanoTime() - start;
                 start = System.nanoTime();
                 points.forEach(secondAlgorithm::find);
@@ -65,7 +65,7 @@ public class TestGenerator {
             }
 
             start = System.nanoTime();
-            Task3 thirdAlgorithm = new Task3(rectangles);
+            ThirdAlgorithm thirdAlgorithm = new ThirdAlgorithm(rectangles);
             built = System.nanoTime() - start;
             start = System.nanoTime();
             points.forEach(thirdAlgorithm::find);
