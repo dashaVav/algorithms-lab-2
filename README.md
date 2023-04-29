@@ -5,7 +5,8 @@ ____
 ____
 ##№ Алгоритм полного перебора
 
-```public int search(Point point) {
+```java
+public int search(Point point) {
         int count = 0;
 
         for (Rectangle rectangle : rectangles) {
