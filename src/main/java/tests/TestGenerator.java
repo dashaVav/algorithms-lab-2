@@ -32,7 +32,7 @@ public class TestGenerator {
 
     public static void main(String[] args) throws IOException {
         long start, built, search;
-        List<Point> points = generateTestPoints(1000);
+        List<Point> points = generateTestPoints(100000);
 
         PrintWriter writerFirstAlgorithm = new PrintWriter("artefacts/BruteForceAlgorithmResults.csv");
         writerFirstAlgorithm.write("Rectangles count; Build time; Request time; Total time\n");
@@ -42,24 +42,27 @@ public class TestGenerator {
         writerThirdAlgorithm.write("Rectangles count; Build time; Request time; Total time\n");
 
         writerFirstAlgorithm.write("");
-        for (int i = 0; i <= 10; i++){
+        for (int i = 0; i < 15; i++){
             List<Rectangle> rectangles = generateTestRectangles((int) Math.pow(2, i));
             int I = (int) Math.pow(2, i);
+            System.out.println(I);
             start = System.nanoTime();
             Task1 firstAlgorithm = new Task1(rectangles);
             built = System.nanoTime() - start;
             start = System.nanoTime();
             points.forEach(firstAlgorithm::find);
             search = System.nanoTime() - start;
-            writerFirstAlgorithm.write(I + ";" + built + "; " + search + "; " + (built + search) + "\n");
+            writerFirstAlgorithm.write(I + "; " + built + "; " + search + "; " + (built + search) + "\n");
 
-            start = System.nanoTime();
-            Task2 secondAlgorithm = new Task2(rectangles);
-            built = System.nanoTime() - start;
-            start = System.nanoTime();
-            points.forEach(secondAlgorithm::find);
-            search = System.nanoTime() - start;
-            writerSecondAlgorithm.write(I + ";" + built + "; " + search + "; " + (built + search) + "\n");
+            if (i < 13) {
+                start = System.nanoTime();
+                Task2 secondAlgorithm = new Task2(rectangles);
+                built = System.nanoTime() - start;
+                start = System.nanoTime();
+                points.forEach(secondAlgorithm::find);
+                search = System.nanoTime() - start;
+                writerSecondAlgorithm.write(I + "; " + built + "; " + search + "; " + (built + search) + "\n");
+            }
 
             start = System.nanoTime();
             Task3 thirdAlgorithm = new Task3(rectangles);
@@ -67,7 +70,7 @@ public class TestGenerator {
             start = System.nanoTime();
             points.forEach(thirdAlgorithm::find);
             search = System.nanoTime() - start;
-            writerThirdAlgorithm.write(I + ";" + built + "; " + search + "; " + (built + search) + "\n");
+            writerThirdAlgorithm.write(I + "; " + built + "; " + search + "; " + (built + search) + "\n");
         }
 
         writerFirstAlgorithm.close();
