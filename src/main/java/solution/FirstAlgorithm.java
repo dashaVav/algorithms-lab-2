@@ -9,7 +9,7 @@ public class FirstAlgorithm {
         this.rectangles = rectangles;
     }
 
-    public int find(Point point) {
+    public int search(Point point) {
         int count = 0;
 
         for (Rectangle rectangle : rectangles) {

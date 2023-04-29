@@ -10,9 +10,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestGenerator {
-
-    public static List<Rectangle> generateTestRectangles(int n){
+public class Autotest {
+    private static List<Rectangle> generateTestRectangles(int n){
         List<Rectangle> rectangles= new ArrayList<>();
         for (int i = 0; i < n; i++) {
             rectangles.add(new Rectangle(10 * i, 10 * i, 10 * (2 * n - 1), 10 * (2 * n - 1)));
@@ -20,7 +19,7 @@ public class TestGenerator {
         return rectangles;
     }
 
-    public static List<Point> generateTestPoints(int n){
+    private static List<Point> generateTestPoints(int n){
         List<Point> points = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             int x = (int) Math.pow(1009 * i, 31) % (20 * n);
@@ -50,7 +49,7 @@ public class TestGenerator {
             FirstAlgorithm firstAlgorithm = new FirstAlgorithm(rectangles);
             built = System.nanoTime() - start;
             start = System.nanoTime();
-            points.forEach(firstAlgorithm::find);
+            points.forEach(firstAlgorithm::search);
             search = System.nanoTime() - start;
             writerFirstAlgorithm.write(I + "; " + built + "; " + search + "; " + (built + search) + "\n");
 
@@ -59,7 +58,7 @@ public class TestGenerator {
                 SecondAlgorithm secondAlgorithm = new SecondAlgorithm(rectangles);
                 built = System.nanoTime() - start;
                 start = System.nanoTime();
-                points.forEach(secondAlgorithm::find);
+                points.forEach(secondAlgorithm::search);
                 search = System.nanoTime() - start;
                 writerSecondAlgorithm.write(I + "; " + built + "; " + search + "; " + (built + search) + "\n");
             }
@@ -68,7 +67,7 @@ public class TestGenerator {
             ThirdAlgorithm thirdAlgorithm = new ThirdAlgorithm(rectangles);
             built = System.nanoTime() - start;
             start = System.nanoTime();
-            points.forEach(thirdAlgorithm::find);
+            points.forEach(thirdAlgorithm::search);
             search = System.nanoTime() - start;
             writerThirdAlgorithm.write(I + "; " + built + "; " + search + "; " + (built + search) + "\n");
         }

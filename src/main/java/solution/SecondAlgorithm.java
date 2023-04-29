@@ -6,8 +6,8 @@ import java.util.List;
 
 public class SecondAlgorithm {
     private final int[][] map;
-    List<Integer> coordinatesX;
-    List<Integer> coordinatesY;
+    List<Integer> zipX;
+    List<Integer> zipY;
 
     public SecondAlgorithm(List<Rectangle> rectangles) {
         Set<Integer> setX = new HashSet<>();
@@ -22,24 +22,24 @@ public class SecondAlgorithm {
             setY.add(r.y2 + 1);
         }
 
-        coordinatesX = new ArrayList<>(setX);
-        coordinatesY = new ArrayList<>(setY);
+        zipX = new ArrayList<>(setX);
+        zipY = new ArrayList<>(setY);
 
-        Collections.sort(coordinatesX);
-        Collections.sort(coordinatesY);
+        Collections.sort(zipX);
+        Collections.sort(zipY);
 
         Map<Integer, Integer> coordsX = new HashMap<>();
         Map<Integer, Integer> coordsY = new HashMap<>();
 
-        for (int i = 0; i < coordinatesX.size(); i++) {
-            coordsX.put(coordinatesX.get(i), i);
+        for (int i = 0; i < zipX.size(); i++) {
+            coordsX.put(zipX.get(i), i);
         }
 
-        for (int i = 0; i < coordinatesY.size(); i++) {
-            coordsY.put(coordinatesY.get(i), i);
+        for (int i = 0; i < zipY.size(); i++) {
+            coordsY.put(zipY.get(i), i);
         }
 
-        map = new int[coordinatesX.size()][coordinatesY.size()];
+        map = new int[zipX.size()][zipY.size()];
 
         for (Rectangle r: rectangles) {
             for (int i = coordsX.get(r.x1); i < coordsX.get(r.x2) + 1; i++) {
@@ -50,7 +50,7 @@ public class SecondAlgorithm {
         }
     }
 
-    public int binSearch(Integer num, List<Integer> coordinates){
+    private int binSearch(Integer num, List<Integer> coordinates){
         int left = 0;
         int right = coordinates.size();
 
@@ -66,9 +66,9 @@ public class SecondAlgorithm {
         return left - 1;
     }
 
-    public int find(Point point) {
-        int i = binSearch(point.x, coordinatesX);
-        int j = binSearch(point.y, coordinatesY);
+    public int search(Point point) {
+        int i = binSearch(point.x, zipX);
+        int j = binSearch(point.y, zipY);
         if (i == -1 || j == -1) return 0;
         return map[i][j];
     }

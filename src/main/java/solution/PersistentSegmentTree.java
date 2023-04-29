@@ -20,7 +20,7 @@ public class PersistentSegmentTree {
         }
     }
 
-    public Node builtEmptyPersistentTree(int[] emptyMas, int leftIndex, int rightIndex) {
+    private Node builtEmptyPersistentTree(int[] emptyMas, int leftIndex, int rightIndex) {
         if (rightIndex - leftIndex == 1) {
             return new Node(null, null, leftIndex, rightIndex, emptyMas[leftIndex]);
         }
@@ -33,7 +33,7 @@ public class PersistentSegmentTree {
         return new Node(left, right, left.leftRange, right.rightRange, left.sum + right.sum);
     }
 
-    public Node addNodeToPersistentTree(Node root, int leftIndex, int rightIndex, int val) {
+    private Node addNodeToPersistentTree(Node root, int leftIndex, int rightIndex, int val) {
         if (leftIndex <= root.leftRange && rightIndex >= root.rightRange) {
             return new Node(root.left, root.right, root.leftRange, root.rightRange, root.sum + val);
         }
@@ -50,11 +50,11 @@ public class PersistentSegmentTree {
         return newRoot;
     }
     
-    public int find(int x, int y){
+    public int search(int x, int y){
         return searchInPersistentSegmentTree(PersistentSegmentTreeNodes.get(x), y);
     }
 
-    public int searchInPersistentSegmentTree(Node root, int num) {
+    private int searchInPersistentSegmentTree(Node root, int num) {
         if (root == null) return 0;
 
         int middle = (root.leftRange + root.rightRange) / 2;

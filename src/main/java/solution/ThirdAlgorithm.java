@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.List;
 
 public class ThirdAlgorithm {
-    public static class EventComparator implements Comparator<Event> {
+    private static class EventComparator implements Comparator<Event> {
         public int compare(Event e1, Event e2) {
             return e1.n - e2.n;
         }
@@ -53,7 +53,7 @@ public class ThirdAlgorithm {
         persistentSegmentTree = new PersistentSegmentTree(events, coordinatesY.size());
     }
 
-    public int binSearch(Integer num, List<Integer> coordinates){
+    private int binSearch(Integer num, List<Integer> coordinates){
         int left = 0;
         int right = coordinates.size();
 
@@ -69,7 +69,7 @@ public class ThirdAlgorithm {
         return left - 1;
     }
 
-    public int find(Point point){
+    public int search(Point point){
         if (coordinatesX.size() == 0) {
             return 0;
         }
@@ -77,11 +77,10 @@ public class ThirdAlgorithm {
         int xZip = binSearch(point.x, coordinatesX);
         int yZip = binSearch(point.y, coordinatesY);
 
-
         if (xZip == -1 || yZip == -1 || persistentSegmentTree.PersistentSegmentTreeNodes.size() <= xZip) {
             return 0;
         }
 
-        return persistentSegmentTree.find(xZip, yZip);
+        return persistentSegmentTree.search(xZip, yZip);
     }
 }

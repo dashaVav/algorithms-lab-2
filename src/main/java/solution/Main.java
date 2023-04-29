@@ -14,14 +14,16 @@ public class Main {
         for (int i = 0; i < n; i++) {
             rectangles.add(new Rectangle(scanner.nextInt(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt()));
         }
+
         //нужно выбрать алгоритм, который запустится
-//        FirstAlgorithm task = new FirstAlgorithm(rectangles);
+
+        FirstAlgorithm task = new FirstAlgorithm(rectangles);
 //        SecondAlgorithm task = new SecondAlgorithm(rectangles);
-        ThirdAlgorithm task = new ThirdAlgorithm(rectangles);
+//        ThirdAlgorithm task = new ThirdAlgorithm(rectangles);
 
         int m = scanner.nextInt();
         for (int i = 0; i < m; i++) {
-            System.out.print(task.find(new Point(scanner.nextInt(), scanner.nextInt())) + " ");
+            System.out.print(task.search(new Point(scanner.nextInt(), scanner.nextInt())) + " ");
         }
     }
 }
